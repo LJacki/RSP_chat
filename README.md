@@ -86,9 +86,9 @@ API_SECRET= "392c0282fd778dbd3d75051673ffa19b"
 ```python
 def get_voice(self):
 
-    print("Start recording :")
-    os.system('arecord -D "plughw:1,0" -f S16_LE -d 5 -r16000 {}'.format(self.filename))
-    print("Done!")
+	print("Start recording :")
+	os.system('arecord -D "plughw:1,0" -f S16_LE -d 5 -r16000 {}'.format(self.filename))
+	print("Done!")
     wf = open(self.filename,"rb")
 	voice_data = wf.read()
 	wf.close
@@ -112,7 +112,7 @@ def get_voice(self):
 
 ```python
 	def __init__(self):
-    def get_turing_text(self,text):
+	def get_turing_text(self,text):
 ```
 
 此对象实现的功能为接入Turing机器人，以从百度语音识别的文本数据为形参，传入方法`get_turing_text(self,text)`（获取方式与上述中访问百度语音API方法类似，此处不再累述），函数返回从Turing机器人对话后返回的文本数据。
