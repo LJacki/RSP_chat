@@ -86,10 +86,10 @@ API_SECRET= "392c0282fd778dbd3d75051673ffa19b"
 ```python
 def get_voice(self):
 
-	print("Start recording :")
-	os.system('arecord -D "plughw:1,0" -f S16_LE -d 5 -r16000 {}'.format(self.filename))
+    print("Start recording :")
+    os.system('arecord -D "plughw:1,0" -f S16_LE -d 5 -r16000 {}'.format(self.filename))
     print("Done!")
-	wf = open(self.filename,"rb")
+    wf = open(self.filename,"rb")
 	voice_data = wf.read()
 	wf.close
 	return voice_data
@@ -153,7 +153,7 @@ tts.get_wave_data(greet_data)
 此外，可以通过语音输入“结束程序”，“关灯”，“播放一首歌”，“关机”等来实现相应功能。当程序运行时，如果没有检测到周围环境的语音消息，会主动提示一些常用的关键词：
 
 ```python
-tts_data="你可以这样说：‘嗨小橘子’，‘聊天结束’，‘播放一首歌’，‘结束程序’，‘关机’等等"
+	tts_data="你可以这样说：‘嗨小橘子’，‘聊天结束’，‘播放一首歌’，‘结束程序’，‘关机’等等"
 	tts.get_wave_data(tts_data)
 ```
 
