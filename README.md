@@ -89,7 +89,7 @@ def get_voice(self):
 	print("Start recording :")
 	os.system('arecord -D "plughw:1,0" -f S16_LE -d 5 -r16000 {}'.format(self.filename))
 	print("Done!")
-    wf = open(self.filename,"rb")
+	wf = open(self.filename,"rb")
 	voice_data = wf.read()
 	wf.close
 	return voice_data
