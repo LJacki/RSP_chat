@@ -9,9 +9,11 @@ from urllib.request import urlopen,Request
 from urllib.error import URLError
 from urllib.parse import urlencode
 
-CU_ID = "28-D2-44-44-67-B9"
-API_KEY = "76723YF5OUIkBgW9iyDb9DPW"
-API_SECRET = "392c0282fd778dbd3d75051673ffa19b"
+# CU_ID是用户标识，随便定义，一般为设备MAC地址
+# 这里在使用时换成自己申请的 API_KEY 和对应的API_SECRET
+CU_ID = "88-88-88-88-88-88-88"
+API_KEY = "76723YF5OUIkBgW988888888"
+API_SECRET = "392c0282fd778dbd3d75051688888888"
 
 class GetToken(object):
 
@@ -85,38 +87,34 @@ class SoundToText(object):
         else:
             print(json_result['result'][0])
             return json_result['result'][0]
-        
+
 
 class GetVoiceData(object):
 
     def __init__(self):
-        
+
         self.filename = "samples.wav"
 
     def get_voice(self):
-        
+
         print("Start recording :")
         os.system('arecord -D "plughw:1,0" -f S16_LE -d 5 -r 16000 {}'.format(self.filename))
         print("Done!")
-        
+
     def get_data(self):
 
         wf = open(self.filename,"rb")
         voice_data = wf.read()
         wf.close
-        
+
         return voice_data
 
 if __name__ == "__main__":
 
     rec = GetVoiceData()
     stt = SoundToText()
-    
+
     voice = rec.get_voice()
     voice_data = rec.get_data()
 
     text = stt.get_text_data(voice_data)
-
-    
-
-    

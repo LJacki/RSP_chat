@@ -11,7 +11,7 @@ U can talk something with the raspberry_pi which named "Orange",also can say som
 
 语言版本：python3.4
 
-所需python package：os , json , time , base64 , urllib , platform , stat , subprocess 
+所需python package：os , json , time , base64 , urllib , platform , stat , subprocess
 
 安装应用：mpg123、omxplayer
 
@@ -23,7 +23,7 @@ U can talk something with the raspberry_pi which named "Orange",also can say som
 
 工程名为：RSP_chat，里面包含两个文件夹，六个文件，实例如下：
 
-- \_pycache\_ 
+- \_pycache\_
 - media
 - chatStart.sh
 - led.py
@@ -75,8 +75,11 @@ RSP_chat.py为主程序文件。
 词法分析是计算机科学中将字符序列转换为标记（token）序列的过程，从输入字符流中生成标记的过程叫作标记化（tokenization），在这个过程中，词法分析器还会对标记进行分类。此对象用来获取连接网络的`token`，通过标识
 
 ```python
-API_KEY ="76723YF5OUIkBgW9iyDb9DPW"，
-API_SECRET= "392c0282fd778dbd3d75051673ffa19b"
+# CU_ID是用户标识，随便定义，一般为设备MAC地址
+# 这里在使用时换成自己申请的 API_KEY 和对应的API_SECRET
+CU_ID = "88-88-88-88-88-88-88"
+API_KEY = "76723YF5OUIkBgW988888888"
+API_SECRET = "392c0282fd778dbd3d75051688888888"
 ```
 
 为百度语音平台的密钥，转换成网络标识的标准形式，以UTF-8的编码方式保存，用于每次访问百度语音平台。
@@ -101,7 +104,7 @@ def get_voice(self):
 
 ```python
 	def __init__(self, language = "zh"):
-	def get_text_data(self,voice_data): 
+	def get_text_data(self,voice_data):
 ```
 
 此对象主要功能为以固定参数形式将音频数据传入百度语音识别API接口。语言为中文，采样频率为16000Khz，标识为本机MAC地址，上传音频格式为WAV，其中上传音频内容需要进行`base64`编码。以`JSON格式`向网站发送GET请求，尝试打开接入url，如果出现异常会出现异常退出并提示：`IndexError`或者`KeyError`。

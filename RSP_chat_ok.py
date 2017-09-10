@@ -9,9 +9,11 @@ from urllib.request import urlopen,Request
 from urllib.error import URLError
 from urllib.parse import urlencode
 
-CU_ID = "28-D2-44-44-67-B9"
-API_KEY = "76723YF5OUIkBgW9iyDb9DPW"
-API_SECRET = "392c0282fd778dbd3d75051673ffa19b"
+# CU_ID是用户标识，随便定义，一般为设备MAC地址
+# 这里在使用时换成自己申请的 API_KEY 和对应的API_SECRET
+CU_ID = "88-88-88-88-88-88-88"
+API_KEY = "76723YF5OUIkBgW988888888"
+API_SECRET = "392c0282fd778dbd3d75051688888888"
 
 class GetToken(object):
 
@@ -40,11 +42,11 @@ class GetToken(object):
 class GetVoiceData(object):
 
     def __init__(self):
-        
+
         self.filename = "samples.wav"
 
     def get_voice(self):
-        
+
         print("Start recording :")
         os.system('arecord -D "plughw:1,0" -f S16_LE -d 5 -r 16000 {}'.format(self.filename))
         print("Done!")
@@ -52,7 +54,7 @@ class GetVoiceData(object):
         wf = open(self.filename,"rb")
         voice_data = wf.read()
         wf.close
-        
+
         return voice_data
 
 class SoundToText(object):
@@ -101,9 +103,9 @@ class SoundToText(object):
             # print("try say something else!")
             # print(json_result['err_no'])
             return json_result['err_no']
-            
+
             # raise LookupError(json_result['err_msg'])
-        
+
         else:
             print(json_result['result'][0])
             return json_result['result'][0]
@@ -183,7 +185,7 @@ class TextToSpeech(object):
 
         # check error
         try:
-           
+
             w_data = urlopen(self.request)
             raw_data = w_data.read()
             # print(raw_data)
@@ -214,7 +216,7 @@ class TextToSpeech(object):
         time.sleep(0.1)
         play_info, stderr = process.communicate(mp3_data)
         return play_info
-    
+
 
 if __name__ == "__main__":
 
@@ -222,15 +224,13 @@ if __name__ == "__main__":
     stt = SoundToText()
     turing = TuringChatMode()
     tts = TextToSpeech()
-    
+
     while True:
-        
+
         voice_data = rec.get_voice()
-        
+
         stt_data = stt.get_text_data(voice_data)
 
         turing_data = turing.get_turing_text(stt_data)
 
         tts.get_wave_data(turing_data)
-
-    
