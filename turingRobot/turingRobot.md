@@ -1,7 +1,5 @@
 # Python实现图灵机器人交互
 
-[TOC]
-
 ---
 
 ## Where r u from
